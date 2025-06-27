@@ -1,7 +1,10 @@
-# C-Vector-Implementation
+# C Vector Implementation
 
-> Note: This is a test implementation only and the real implementation will require deeper case.
+> **Note:** This is a basic test implementation. A production-ready version would require more comprehensive handling of edge cases, memory management, and type safety.
+ 
+A simple, lightweight vector (dynamic array) implementation in C, supporting minimal data types.
 
- A simple Vector implementation in C with minimal types.
+## Compilation
 
-## Compile using : ```gcc main.c vector.c -o vector_demo```
+```bash
+gcc main.c vector.c -o main
