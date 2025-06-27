@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "vector.h"
 
 #define INITIAL_CAPACITY 4
@@ -47,7 +48,7 @@ void set(IntVector* vec, int index, int value)
     vec->data[index] = value;
 }
 
-void get(IntVector* vec, int index)
+int get(IntVector* vec, int index)
 {
     if(index < 0 || index >= vec->size)
     {
