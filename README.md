@@ -4,4 +4,4 @@
 
  A simple Vector implementation in C with minimal types.
 
-## Compile using : `gcc main.c vector.c -o vector_demo`
+## Compile using : ```gcc main.c vector.c -o vector_demo```
