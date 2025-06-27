@@ -27,3 +27,42 @@ void push_back(IntVector* vec, int value)
     }
     vec->data[vec->size++] = value;
 }
+
+
+void pop_back(IntVector* vec)
+{
+    if (vec->size > 0)
+    {
+        vec->size--;
+    }
+}
+
+void set(IntVector* vec, int index, int value)
+{
+    if(index < 0 || index >= vec->size)
+    {
+        fprintf(stderr, "Index out of memory.\n");
+        exit(EXIT_FAILURE);
+    }
+    vec->data[index] = value;
+}
+
+void get(IntVector* vec, int index)
+{
+    if(index < 0 || index >= vec->size)
+    {
+        fprintf(stderr, "Index out of bounds\n");
+        exit(EXIT_FAILURE);
+    }
+    return vec->data[index];
+}
+
+
+void free_vector(IntVector* vec)
+{
+    free(vec->data);
+    vec->data = NULL;
+    vec->size = 0;
+    vec->capacity = 0;
+
+}

@@ -12,7 +12,8 @@ typedef struct
 void init_vector(IntVector* vec);
 void push_back(IntVector* vec, int value);
 void pop_back(IntVector* vec);
-void get(IntVector* vec, int value);
+int get(IntVector* vec, int index);
+void set(IntVector* vec, int index, int value);
 void free_vector(IntVector* vec);
 
 #endif
