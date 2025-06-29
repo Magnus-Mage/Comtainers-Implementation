@@ -1,4 +1,4 @@
-#include "generic.h"
+#include "vector.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,7 +15,7 @@ void vector_init(GVector* vec, size_t element_size)
 
 void vector_push_back(GVector*vec, void* value)
 {
-    if (vec->size >= vec->capacity - 1)
+    if (vec->size >= vec->capacity)
     {
         vec->capacity *= 2;
         vec->data = realloc(vec->data, vec->element_size * vec->capacity);
