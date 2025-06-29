@@ -20,5 +20,39 @@ void vector_push_back(GVector*vec, void* value)
         vec->capacity *= 2;
         vec->data = realloc(vec->data, vec->element_size * vec->capacity);
     }
-    void* target = 
+    void* target = (char* )vec->data + vec->size * vec->element_size;
+    memcpy(target, value, vec->element_size);
+    vec->size++;
+}
+
+void *vector_get(GVector* vec, int index)
+{
+    if (index <0 || index >= vec->size)
+    {
+        return NULL;
+    }
+
+    return (char* )vec->data + index * vec->element_size;
+}
+
+
+void vector_set(GVector* vec, int index, void* value)
+{
+    if (index < 0 || index >= vec->size)
+    {
+        fprintf(stderr, "Out of Bounds.\n");
+        exit(EXIT_FAILURE);
+    }
+
+    void *target = (char* )vec->data + index * vec->element_size;
+    memcpy(target, value, vec->element_size);
+}
+
+void vector_free(GVector* vec)
+{
+    free(vec->data);
+    vec->data = NULL;
+    vec->size = 0;
+    vec->element_size = 0;
+    vec->capacity = 0;
 }
