@@ -4,7 +4,9 @@
  
 A simple, lightweight vector (dynamic array) implementation in C, supporting minimal data types.
 
-## Compilation
+## Compilation for individual dir
 
 ```bash
 gcc main.c vector.c -o main
+
+
