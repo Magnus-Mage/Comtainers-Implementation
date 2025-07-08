@@ -10,9 +10,31 @@ namespace test
 	class vector
 	{
 	private:
-		T*          m_elements { nullprt };
+		T*          m_elements { nullptr };
 		std::size_t m_size     { 0 };
 		std::size_t m_capacity { 0 };
+		
+		/**
+		 * @brief Allocate memory to the vector on initialise 
+		 * @param new_capacity The new capacity of the new container.
+		 * @return Return pointer to the allocated memory
+		 */
+		T* allocate_aux(std::size_t new_capacity)
+		{
+			auto p = static_cast<T*>(::operator new(sizeof(T) * new_capacity));
+			return p;
+		}
+
+		/**
+		 * @brief Fills the raw memory block %[begin(), begin() + m_size) with %n copies
+		 * %init
+		 */
+		template<typename U>
+			requires std::is_convertible_v<U, T>
+		void copy_aux(const U& init, std::size_t  size)
+		{
+
+		}
 
 		/**
 		 * @brief Check if the container is full or not
@@ -41,7 +63,27 @@ namespace test
 		 * @brief Checks if the vector is empty or not.
 		 * @return Returns True if the vector is empty
 		 */
-		[[nodiscrard]] bool empty() const { return size() == 0; } 
+		[[nodiscrard]] bool empty() const { return size() == 0; }
+		
+		// Constructor
+		/**
+		 * @brief creates a constructor with no elements
+		 */
+		vector() = default;
+
+		/**
+		 * @brief Initialise a vector with n copies of an element
+		 * @param n Number of elements to initially create
+		 * @param init a element to copy.
+		 */
+		vector(std::size_t n, const T& init)
+			: m_elements {allocate_aux(n)}
+			, m_size     { 0 }
+			, m_capacity { n }
+		{
+			copy_aux(init, n);
+			m_size     = n;	
+		}	
 	};
 		
 }
